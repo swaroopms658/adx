@@ -4,8 +4,21 @@
  */
 
 class WebSocketManager {
-    constructor(url = 'ws://localhost:8000/ws/chat') {
-        this.url = url;
+    constructor(url = null) {
+        // Auto-detect production vs local
+        if (!url) {
+            const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+            if (isProduction) {
+                // Production: Use Render backend URL (will be updated after deployment)
+                const backendUrl = 'wss://adx-backend.onrender.com/ws/chat';
+                this.url = backendUrl;
+            } else {
+                // Local development
+                this.url = 'ws://localhost:8000/ws/chat';
+            }
+        } else {
+            this.url = url;
+        }
         this.socket = null;
         this.isConnected = false;
         this.reconnectAttempts = 0;
