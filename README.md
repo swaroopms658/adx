@@ -2,7 +2,7 @@
 
 A real-time AI-powered avatar interaction system built for the AdxReel DeepTech Assignment. This prototype enables an interviewer to have a natural conversation with an AI avatar that features voice input, intelligent responses, voice output, and animated visual representation.
 
-![AI Avatar Demo](https://via.placeholder.com/800x400?text=AI+Avatar+Demo)
+
 
 ## 🚀 Live Demo
 
@@ -13,7 +13,7 @@ A real-time AI-powered avatar interaction system built for the AdxReel DeepTech 
 
 ### Core Functionality
 - 🎤 **Voice Input** - Real-time speech-to-text using Web Speech API
-- 🧠 **AI Responses** - Intelligent conversation using Google Gemini 1.5 Flash
+- 🧠 **AI Responses** - Intelligent conversation using Groq (Llama 3 70B)
 - 🔊 **Voice Output** - Natural text-to-speech with optional ElevenLabs integration
 - 🎭 **3D Avatar** - Animated geometric avatar with Three.js
 - ⚡ **Real-time Streaming** - Token-by-token response delivery via WebSockets
@@ -50,8 +50,8 @@ A real-time AI-powered avatar interaction system built for the AdxReel DeepTech 
                     └──────────┬──────────┘
                                │
                     ┌──────────┴──────────┐
-                    │   Google Gemini     │
-                    │   1.5 Flash API     │
+                    │       Groq API      │
+                    │   (Llama 3 70B)     │
                     └─────────────────────┘
 ```
 
@@ -60,14 +60,14 @@ A real-time AI-powered avatar interaction system built for the AdxReel DeepTech 
 ### Prerequisites
 - **Python 3.8+** (for backend)
 - **Modern browser** (Chrome recommended for best speech recognition)
-- **Google Gemini API Key** (free from [Google AI Studio](https://aistudio.google.com/))
+- **Groq API Key** (free from [Groq Console](https://console.groq.com/))
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/ai-avatar.git
-   cd ai-avatar
+   git clone https://github.com/swaroopms658/adx.git
+   cd adx
    ```
 
 2. **Set up the backend**
@@ -79,7 +79,7 @@ A real-time AI-powered avatar interaction system built for the AdxReel DeepTech 
 3. **Configure API keys**
    ```bash
    copy .env.example .env
-   # Edit .env and add your Gemini API key
+   # Edit .env and add your Groq/Gemini API key
    ```
 
 4. **Start the backend server**
@@ -101,7 +101,7 @@ A real-time AI-powered avatar interaction system built for the AdxReel DeepTech 
 
 1. **First Run**
    - Click the ⚙️ Settings button
-   - Enter your Gemini API key (optional if set in backend .env)
+   - Enter your Groq API key (optional if set in backend .env)
    - Select your preferred TTS voice
    - Click "Save Settings"
 
@@ -120,7 +120,7 @@ A real-time AI-powered avatar interaction system built for the AdxReel DeepTech 
 ## 📁 Project Structure
 
 ```
-ai-avatar/
+adx/
 ├── backend/
 │   ├── main.py              # FastAPI server with WebSocket
 │   ├── requirements.txt     # Python dependencies
@@ -139,7 +139,7 @@ ai-avatar/
 │
 ├── README.md                # This file
 ├── TECHNICAL.md             # Technical documentation
-└── architecture.md          # Detailed architecture diagrams
+├── architecture.md          # Detailed architecture diagrams
 ```
 
 ## 🔧 Configuration
@@ -148,7 +148,8 @@ ai-avatar/
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `GEMINI_API_KEY` | Yes | Your Google Gemini API key |
+| `GROQ_API_KEY` | Yes | Your Groq API key (Primary) |
+| `GEMINI_API_KEY` | No | Optional fallback LLM |
 | `ELEVENLABS_API_KEY` | No | Optional premium TTS |
 | `HOST` | No | Server host (default: 0.0.0.0) |
 | `PORT` | No | Server port (default: 8000) |
@@ -156,7 +157,7 @@ ai-avatar/
 ### Frontend Settings
 
 Settings are saved in browser localStorage:
-- **Gemini API Key** - Can override backend key
+- **Groq API Key** - Can override backend key
 - **ElevenLabs API Key** - For premium voice synthesis
 - **TTS Voice** - Select from available browser voices
 - **Auto-speak** - Automatically speak AI responses
@@ -165,7 +166,7 @@ Settings are saved in browser localStorage:
 
 | Component | Technology | Why |
 |-----------|------------|-----|
-| **LLM** | Gemini 1.5 Flash | Free tier, fast, streaming |
+| **LLM** | Groq (Llama 3 70B) | Extremely fast inference (LPU) |
 | **Backend** | FastAPI + WebSockets | Async, real-time, simple |
 | **Frontend** | Vanilla JS | No build step, portable |
 | **3D Avatar** | Three.js | WebGL performance, flexibility |
