@@ -10,7 +10,7 @@ class WebSocketManager {
             const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
             if (isProduction) {
                 // Production: Use Render backend URL (will be updated after deployment)
-                const backendUrl = 'wss://adx-backend.onrender.com/ws/chat';
+                const backendUrl = 'wss://adx-mbez.onrender.com/ws/chat';
                 this.url = backendUrl;
             } else {
                 // Local development
