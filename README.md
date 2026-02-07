@@ -4,6 +4,11 @@ A real-time AI-powered avatar interaction system built for the AdxReel DeepTech 
 
 ![AI Avatar Demo](https://via.placeholder.com/800x400?text=AI+Avatar+Demo)
 
+## 🚀 Live Demo
+
+- **Frontend (App):** [https://adx-frontend-mu.vercel.app](https://adx-frontend-mu.vercel.app)
+- **Backend (API):** [https://adx-mbez.onrender.com](https://adx-mbez.onrender.com)
+
 ## 🌟 Features
 
 ### Core Functionality
