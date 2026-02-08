@@ -118,7 +118,7 @@ async def configure_api(api_key: str, provider: str = "groq"):
     global groq_client, gemini_model
     try:
         if provider.lower() == "groq":
-            groq_client = Groq(api_key=api_key)
+            groq_client = AsyncGroq(api_key=api_key)
             return {"status": "success", "message": "Groq configured successfully"}
         else:
             genai.configure(api_key=api_key)
